@@ -12,6 +12,12 @@ def all_factors(n):
             yield n // i
 
 
+def parsed_spreadsheet(filename):
+    with open(filename) as f:
+        for l in f.readlines():
+            yield [int(n) for n in l.strip().split("\t")]
+
+
 def checksum(line):
     return max(line) - min(line)
 
@@ -42,9 +48,7 @@ class Test(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    spreadsheet = [[int(n) for n in l.split("\t")] for l in open('input.txt').read().strip().split("\n")]
-
-    print("star 1: {}".format(spreadsheet_checksum(spreadsheet, checksum)))
-    print("star 2: {}".format(spreadsheet_checksum(spreadsheet, checksum2)))
+    print("star 1: {}".format(spreadsheet_checksum(parsed_spreadsheet('input.txt'), checksum)))
+    print("star 2: {}".format(spreadsheet_checksum(parsed_spreadsheet('input.txt'), checksum2)))
 
     unittest.main()
