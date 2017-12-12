@@ -1,24 +1,24 @@
 import unittest
 from collections import defaultdict
 import itertools
+import math
 
 
 def star1(n):
-    o = 1
+    # o is the dimension of the completed square
+    o = int(math.floor(math.sqrt(n)))
+    if o % 2 == 0:
+        o -= 1
+
+    # a is the length of in the last (likely incomplete) spiral
+    a = n - o ** 2
+
     while True:
-        if o ** 2 > n:
-            o -= 2
+        if a < o + 1:
             break
-        o += 2
+        a -= o + 1
 
-    m = n - o ** 2
-
-    while True:
-        if m < o + 1:
-            break
-        m -= o + 1
-
-    p = abs(((o + 1) / 2) - m)
+    p = abs(((o + 1) / 2) - a)
     return ((o + 1) / 2) + p
 
 
