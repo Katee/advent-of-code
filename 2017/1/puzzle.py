@@ -13,7 +13,7 @@ def captcha(digits, offset=1):
 
 
 def halfway_round_captcha(digits):
-    return captcha(digits, offset=len(digits) / 2)
+    return captcha(digits, offset=len(digits) // 2)
 
 
 class Test(unittest.TestCase):
