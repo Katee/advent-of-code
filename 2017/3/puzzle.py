@@ -98,8 +98,7 @@ class Test(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    n = 325489
-    print("input: {}".format(n))
+    n = int(open('input.txt').read().strip())
 
     print("star 1: {}".format(star1(n)))
     print("star 2: {}".format(star2(n)))
