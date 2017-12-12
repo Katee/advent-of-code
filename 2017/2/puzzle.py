@@ -3,19 +3,13 @@ import math
 
 
 def all_factors(n):
-    factors = []
-
     if n != 0 and n != 1:
-        factors = [1]
+        yield 1
 
-    i = 2
-    while(i <= math.sqrt(n)):
+    for i in range(2, math.floor(math.sqrt(n)) + 1):
         if n % i == 0:
-            factors.append(i)
-            factors.append(n / i)
-        i += 1
-
-    return factors
+            yield i
+            yield n // i
 
 
 def checksum(line):
@@ -26,7 +20,7 @@ def checksum2(line):
     for n in line:
         for factor in all_factors(n):
             if factor in line:
-                return (n / factor)
+                return n // factor
 
 
 def spreadsheet_checksum(spreadsheet, checksum_func):
