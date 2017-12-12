@@ -36,6 +36,10 @@ class Test(unittest.TestCase):
         spreadsheet = [[5, 9, 2, 8], [9, 4, 7, 3], [3, 8, 6, 3]]
         self.assertEqual(9, spreadsheet_checksum(spreadsheet, checksum2))
 
+    def test_all_factors(self):
+        self.assertEqual(set([1, 2, 3]), set(all_factors(6)))
+        self.assertEqual(3, len(list(all_factors(6))))
+
 
 if __name__ == '__main__':
     spreadsheet = [[int(n) for n in l.split("\t")] for l in open('input.txt').read().strip().split("\n")]
